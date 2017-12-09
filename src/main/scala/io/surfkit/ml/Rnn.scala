@@ -44,7 +44,7 @@ object ML {
 
 
   def trainRnnTimeSeries = {
-    //if (!baseDir.exists())
+    if (!baseDir.exists())
       downloadUCIData()
 
     // ----- Load the training data -----

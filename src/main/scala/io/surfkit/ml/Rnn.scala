@@ -44,7 +44,7 @@ object ML {
 
 
   def trainRnnTimeSeries = {
-    if (!baseDir.exists())
+    //if (!baseDir.exists())
       downloadUCIData()
 
     // ----- Load the training data -----
@@ -149,12 +149,12 @@ object ML {
     }
 
     //Randomize and do a train/test split:
-    scala.util.Random.shuffle(contentAndLabels.toList)
+    val contentAndLabelsShuffle = scala.util.Random.shuffle(contentAndLabels.toList)
 
     val nTrain = 450 //75% train, 25% test
     var trainCount = -1
     var testCount = -1
-    contentAndLabels.foreach{  p =>
+    contentAndLabelsShuffle.foreach{  p =>
       //Write output in a format we can read, in the appropriate locations
       val (outPathFeatures, outPathLabels) =
       if (trainCount < nTrain) {
